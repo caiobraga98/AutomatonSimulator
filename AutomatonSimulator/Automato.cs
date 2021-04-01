@@ -4,15 +4,7 @@ using System.Text;
 
 namespace AutomatonSimulator
 {
-    internal class Automato
+    public class Automato
     {
-        public int qtdEstados { get; set; }
-
-        public string[][] Estados { get; set; }
-
-        public Automato(int qtdestados)
-        {
-            this.qtdEstados = qtdestados;
-        }
     }
 }

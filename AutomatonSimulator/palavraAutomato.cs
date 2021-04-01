@@ -35,7 +35,7 @@ namespace AutomatonSimulator
             }
         }
 
-        public void mostrarPalabra()
+        public void mostrarPalaVra()
         {
             foreach (string letra in Letras)
             {

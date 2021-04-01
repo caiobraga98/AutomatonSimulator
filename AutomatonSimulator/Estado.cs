@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,12 +8,17 @@ namespace AutomatonSimulator
     public class Estado
     {
         public string nomeEstado { get; set; }
-        public bool IsEnd { get; set; }
+        private ArrayList transicoes;
 
-        public Estado(string nomeEstado, bool isEnd)
+        public Estado(string nomeEstado)
         {
             this.nomeEstado = nomeEstado;
-            IsEnd = isEnd;
+            ArrayList transicoes = new ArrayList();
+        }
+
+        public void adcionaTransicao(Transicao transicao)
+        {
+            transicoes.Add(transicao);
         }
     }
 }
