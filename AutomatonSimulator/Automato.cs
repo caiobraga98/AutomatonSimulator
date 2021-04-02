@@ -19,12 +19,37 @@ namespace AutomatonSimulator
         public void addEstadoInicial(Estado estado)
         {
             estadoinicial = estado;
-            estados.Add(estado);
         }
 
         public void addEstado(Estado estado)
         {
             estados.Add(estado);
+        }
+
+        public void addEstadoFinal(Estado estado)
+        {
+            estadoFinal = estado;
+        }
+
+        public void inserirLetrasAlfabeto(string letra)
+        {
+            alfabeto.Add(letra);
+        }
+
+        //Metodos internos
+
+        //verifica se existe uma letra no alfabeto
+        //caso não exista,retorna -1
+        private bool procurarLetraAlfabeto(String letra)
+        {
+            if (alfabeto.IndexOf(letra) == -1)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }
