@@ -6,13 +6,23 @@ namespace AutomatonSimulator
 {
     public class Transicao
     {
-        public string letra { get; set; }
-        public Estado proximo { get; set; }
+        private string letra { get; set; }
+        private Estado proximo { get; set; }
 
         public Transicao(string letra, Estado proximo)
         {
             this.letra = letra;
             this.proximo = proximo;
+        }
+
+        public string GetLetra()
+        {
+            return letra;
+        }
+
+        public Estado GetProximo()
+        {
+            return proximo;
         }
     }
 }

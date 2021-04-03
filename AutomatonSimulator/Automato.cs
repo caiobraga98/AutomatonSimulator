@@ -33,14 +33,25 @@ namespace AutomatonSimulator
 
         public void inserirLetrasAlfabeto(string letra)
         {
-            alfabeto.Add(letra);
+            if (procurarLetraAlfabeto(letra))
+            {
+                alfabeto.Add(letra);
+            }
+        }
+
+        public bool VerificarAutomato()
+        {
+            foreach (var letra in alfabeto)
+            {
+                estadoinicial
+            }
         }
 
         //Metodos internos
 
         //verifica se existe uma letra no alfabeto
         //caso não exista,retorna -1
-        private bool procurarLetraAlfabeto(String letra)
+        private bool procurarLetraAlfabeto(string letra)
         {
             if (alfabeto.IndexOf(letra) == -1)
             {
