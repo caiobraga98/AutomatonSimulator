@@ -7,60 +7,56 @@ namespace AutomatonSimulator
 {
     public class Automato
     {
-        private ArrayList alfabeto;
-        private ArrayList estados;
-        public Estado estadoinicial { get; set; }
-        public Estado estadoFinal { get; set; }
+        private List<string> Alfabeto { get; set; }
+        private Estado EstadoStart { get; set; }
+        private Estado EstadoEnd { get; set; }
+
+        private Estado EstadoAtual { get; set; } 
 
         public Automato()
         {
+            Alfabeto = new List<string>();
         }
 
-        public void addEstadoInicial(Estado estado)
+        public void AddEstadoStart(Estado estado)
         {
-            estadoinicial = estado;
+            EstadoStart = estado;
         }
 
-        public void addEstado(Estado estado)
+        public void AddEstadoEnd(Estado estado)
         {
-            estados.Add(estado);
+            EstadoEnd = estado;
         }
 
-        public void addEstadoFinal(Estado estado)
+        public void InserirLetrasAlfabeto(string letra)
         {
-            estadoFinal = estado;
+            Alfabeto.Add(letra);
         }
 
-        public void inserirLetrasAlfabeto(string letra)
+        public bool VerificarAutomatoAceito()
         {
-            if (procurarLetraAlfabeto(letra))
+            EstadoAtual = EstadoStart;
+            foreach (var letra in Alfabeto)
             {
-                alfabeto.Add(letra);
+                EstadoAtual = EstadoAtual.VerificarTransicao(letra, EstadoAtual);
             }
-        }
 
-        public bool VerificarAutomato()
-        {
-            foreach (var letra in alfabeto)
-            {
-                estadoinicial
-            }
-        }
-
-        //Metodos internos
-
-        //verifica se existe uma letra no alfabeto
-        //caso não exista,retorna -1
-        private bool procurarLetraAlfabeto(string letra)
-        {
-            if (alfabeto.IndexOf(letra) == -1)
-            {
-                return false;
-            }
-            else
-            {
+            if (EstadoAtual == EstadoEnd)
                 return true;
-            }
+            else
+                return false;
         }
+
+        //private bool ProcurarLetraAlfabeto(string letra)
+        //{
+        //    if (Alfabeto.IndexOf(letra) == -1)
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return true;
+        //    }
+        //}
     }
 }

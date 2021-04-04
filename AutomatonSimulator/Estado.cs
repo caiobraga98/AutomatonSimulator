@@ -7,30 +7,31 @@ namespace AutomatonSimulator
 {
     public class Estado
     {
-        private string nomeEstado { get; set; }
-        private List<Transicao> transicoes;
+        private string NomeEstado { get; set; }
+        private List<Transicao> Transicoes { get; set; }
 
         public Estado(string nomeEstado)
         {
-            this.nomeEstado = nomeEstado;
-            List<Transicao> transicoes = new List<Transicao>();
+            NomeEstado = nomeEstado;
+            Transicoes = new List<Transicao>();
         }
 
-        public void adcionaTransicao(Transicao transicao)
+        public void AdicionarTransicao(Transicao transicao)
         {
-            transicoes.Add(transicao);
+            Transicoes.Add(transicao);
         }
 
-        //public Estado VerificarTransicao(string letra)
-        //{
-        //    foreach (var transicao in transicoes)
-        //    {
-        //        if (letra == transicao.GetLetra())
-        //        {
-        //            return transicao.GetProximo();
-        //        }
-        //    }
-        //    return ;
-        //}
+        public Estado VerificarTransicao(string letra, Estado EstadoAtual)
+        {
+            foreach (var transicao in Transicoes)
+            {
+                if (letra == transicao.GetLetra())
+                {
+                    return transicao.GetProximo();
+                }
+            }
+
+            return EstadoAtual;
+        }
     }
 }
