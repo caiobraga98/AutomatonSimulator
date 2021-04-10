@@ -12,4 +12,4 @@ Ao projeto ser clonado em uma plataforma que permita a execução de códigos C#
 - Deverá inserir, no automato instanciado, o estado inicial e final do automato
 - Deverá inserir cada transição na devida instancia do seu estado
 - Deverá ser inserido cada letra da palavra a ser testada na instancia do automato
-- Para finalizar, o teste do automato irá ocorrer ao chamar o metodo VerificarPalavraAceita na instancia do automato, se retornar True o automato foi aceito, se retornar False o automato foi recusado
+- Para finalizar, o teste da palavra irá ocorrer ao chamar o metodo VerificarPalavraAceita na instancia do automato, se retornar True a palavra foi aceita, se retornar False a palavra foi recusada
