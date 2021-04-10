@@ -2,7 +2,7 @@
 
 namespace AutomatonSimulator
 {
-    internal class Program
+    class Program
     {
         private static void Main(string[] args)
         {
@@ -23,9 +23,9 @@ namespace AutomatonSimulator
             q2.AdicionarTransicao(new Transicao("B", q1));
             q2.AdicionarTransicao(new Transicao("A", q2));
             automato.InserirLetraPalavra("B");
-            automato.InserirLetraPalavra("A");
             automato.InserirLetraPalavra("B");
             automato.InserirLetraPalavra("A");
+            automato.InserirLetraPalavra("B");
             automato.InserirLetraPalavra("A");
             //Console.WriteLine(automato.VerificarPalavraAlfabeto());
             Console.WriteLine(automato.VerificarPalavraAceita());
