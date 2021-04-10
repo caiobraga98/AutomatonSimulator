@@ -18,7 +18,7 @@ namespace AutomatonSimulator
 
         public void AdicionarTransicao(Transicao transicao)
         {
-            Transicoes.Add(transicao);
+            Transicoes.Add(transicao);            
         }
 
         public Estado VerificarTransicao(string letra, Estado EstadoAtual)

@@ -7,56 +7,80 @@ namespace AutomatonSimulator
 {
     public class Automato
     {
-        private List<string> Alfabeto { get; set; }
-        private Estado EstadoStart { get; set; }
-        private Estado EstadoEnd { get; set; }
+        private List<string> Palavra { get; set; }
+        private List<string> LetrasAlfabeto { get; set; }
+        private Estado EstadoInicial { get; set; }
+        private Estado EstadoFinal { get; set; }
 
-        private Estado EstadoAtual { get; set; } 
+        private Estado EstadoAtual { get; set; }
 
         public Automato()
         {
-            Alfabeto = new List<string>();
+            Palavra = new List<string>();
+            LetrasAlfabeto = new List<string>();
         }
 
-        public void AddEstadoStart(Estado estado)
+        public void InserirEstadoInicial(Estado estado)
         {
-            EstadoStart = estado;
+            EstadoInicial = estado;
         }
 
-        public void AddEstadoEnd(Estado estado)
+        public void InserirEstadoFinal(Estado estado)
         {
-            EstadoEnd = estado;
+            EstadoFinal = estado;
         }
 
-        public void InserirLetrasAlfabeto(string letra)
+        public void InserirLetraPalavra(string letra)
         {
-            Alfabeto.Add(letra);
+            Palavra.Add(letra);
         }
 
-        public bool VerificarAutomatoAceito()
+        public void InserirLetraAlfabeto(string letra)
         {
-            EstadoAtual = EstadoStart;
-            foreach (var letra in Alfabeto)
+            LetrasAlfabeto.Add(letra);
+        }
+
+        public bool VerificarPalavraAceita()
+        {
+            if (!VerificarPalavraAlfabeto())
+            {
+                ConverterDeterministico();
+                Console.WriteLine("Automato nao deterministico transformado em deterministico!");
+            }
+
+            EstadoAtual = EstadoInicial;
+            foreach (var letra in Palavra)
             {
                 EstadoAtual = EstadoAtual.VerificarTransicao(letra, EstadoAtual);
             }
 
-            if (EstadoAtual == EstadoEnd)
+            if (EstadoAtual == EstadoFinal)
                 return true;
             else
                 return false;
         }
 
-        //private bool ProcurarLetraAlfabeto(string letra)
-        //{
-        //    if (Alfabeto.IndexOf(letra) == -1)
-        //    {
-        //        return false;
-        //    }
-        //    else
-        //    {
-        //        return true;
-        //    }
-        //}
+        public bool VerificarPalavraAlfabeto()
+        {
+            foreach (var letra in Palavra)
+            {
+                if (!LetrasAlfabeto.Contains(letra))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public void ConverterDeterministico()
+        {
+            foreach (var letra in new List<string>(Palavra))
+            {
+                if (!LetrasAlfabeto.Contains(letra))
+                {
+                    Palavra.Remove(letra);
+                }
+            }
+        }
     }
 }
